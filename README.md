@@ -1,4 +1,4 @@
-# Angular App Template
+# PizzaStore (Angular)
 
 # Getting started
 
