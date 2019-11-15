@@ -102,7 +102,7 @@ A pre-commit git hook has been configured on this project to automatically forma
 (pretty-quick)[https://github.com/azz/pretty-quick], so you don't have to care for it.
 
 You can also force code formatting by running the command `npm run prettier`.
-
+<!--
 # What's in the box
 
 The app template is based on [HTML5](http://whatwg.org/html), [TypeScript](http://www.typescriptlang.org) and
@@ -152,4 +152,4 @@ Development, build and quality processes are based on [angular-cli](https://gith
 - [Working behind a corporate proxy](docs/corporate-proxy.md)
 - [Updating dependencies and tools](docs/updating.md)
 - [Using a backend proxy for development](docs/backend-proxy.md)
-- [Browser routing](docs/routing.md)
+- [Browser routing](docs/routing.md) -->
