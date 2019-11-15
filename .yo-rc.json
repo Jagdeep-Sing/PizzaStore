@@ -1,0 +1,23 @@
+{
+  "generator-ngx-rocket": {
+    "version": "6.0.1",
+    "props": {
+      "location": "path",
+      "appName": "Angular App Template",
+      "target": ["web", "cordova", "electron"],
+      "pwa": true,
+      "mobile": ["ios", "android"],
+      "desktop": ["windows", "mac", "linux"],
+      "ui": "bootstrap",
+      "auth": true,
+      "lazy": true,
+      "angulartics": true,
+      "analyticsProvider": "ga",
+      "googleAnalyticsAccount": "UA-1234567-1",
+      "tools": ["prettier", "hads", "compodoc"],
+      "utility": ["lodash", "moment"],
+      "projectName": "angular-app-template",
+      "packageManager": "npm"
+    }
+  }
+}
