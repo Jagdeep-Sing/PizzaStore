@@ -9,9 +9,13 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { QuoteService } from './quote.service';
 
+import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
+
 @NgModule({
-  imports: [CommonModule, TranslateModule, CoreModule, SharedModule, Angulartics2Module, HomeRoutingModule],
+  imports: [CommonModule, TranslateModule, CoreModule,
+    SharedModule, Angulartics2Module,
+    HomeRoutingModule,NgZorroAntdModule],
   declarations: [HomeComponent],
   providers: [QuoteService]
 })
-export class HomeModule {}
+export class HomeModule { }

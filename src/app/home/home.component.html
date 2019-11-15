@@ -1,20 +1,83 @@
-<div class="container-fluid">
-  <div class="jumbotron text-center">
-    <h1>
-      <img class="logo" src="assets/ngx-rocket-logo.png" alt="angular logo" />
-      <span translate>Hello world !</span>
-    </h1>
-    <app-loader [isLoading]="isLoading"></app-loader>
-    <q [hidden]="isLoading">{{ quote }}</q>
-    <p>
-      <button
-        class="btn btn-primary"
-        angulartics2On="click"
-        angularticsAction="Click button below quote"
-        [angularticsCategory]="quote"
-      >
-        Click me to send an Analytics event
-      </button>
-    </p>
-  </div>
-</div>
+<nz-tabset>
+  <nz-tab nzTitle="VEG PIZZA">
+    <div style="background: #ececec;padding:30px;">
+      <div nz-row [nzGutter]="8">
+        <div nz-col [nzSpan]="5" (click)="open()">
+          <nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate">
+            <nz-card-meta nzTitle="Deluxe Veggie"
+              nzDescription="Veg delight - onion, capsicum, grilled mushroom, corn & paneer"></nz-card-meta>
+          </nz-card>
+          <ng-template #coverTemplate>
+            <img alt="example" src="https://images.dominos.co.in/new_non_veg_supreme.jpg" />
+          </ng-template>
+        </div>
+        <div nz-col [nzSpan]="5" (click)="open()">
+          <nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate">
+            <nz-card-meta nzTitle="Deluxe Veggie"
+              nzDescription="Veg delight - onion, capsicum, grilled mushroom, corn & paneer"></nz-card-meta>
+          </nz-card>
+          <ng-template #coverTemplate>
+            <img alt="example" src="https://images.dominos.co.in/new_non_veg_supreme.jpg" />
+          </ng-template>
+        </div>
+        <div nz-col [nzSpan]="5" (click)="open()">
+          <nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate">
+            <nz-card-meta nzTitle="Deluxe Veggie"
+              nzDescription="Veg delight - onion, capsicum, grilled mushroom, corn & paneer"></nz-card-meta>
+          </nz-card>
+          <ng-template #coverTemplate>
+            <img alt="example" src="https://images.dominos.co.in/new_non_veg_supreme.jpg" />
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </nz-tab>
+  <nz-tab nzTitle="NON-VEG PIZZA">
+    <div style="background: #ececec;padding:30px;">
+      <div nz-row [nzGutter]="8">
+        <div nz-col [nzSpan]="5" (click)="open()">
+          <nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate1">
+            <nz-card-meta nzTitle="Deluxe Veggie"
+              nzDescription="A classic American taste! Relish the delectable flavor of Chicken Pepperoni, topped with extra cheese">
+            </nz-card-meta>
+          </nz-card>
+          <ng-template #coverTemplate1>
+            <img alt="example" src="https://images.dominos.co.in/cheesepepperoni.png" />
+          </ng-template>
+        </div>
+        <div nz-col [nzSpan]="5" (click)="open()">
+          <nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate1">
+            <nz-card-meta nzTitle="Deluxe Veggie"
+              nzDescription="A classic American taste! Relish the delectable flavor of Chicken Pepperoni, topped with extra cheese">
+            </nz-card-meta>
+          </nz-card>
+          <ng-template #coverTemplate1>
+            <img alt="example" src="https://images.dominos.co.in/cheesepepperoni.png" />
+          </ng-template>
+        </div>
+        <div nz-col [nzSpan]="5" (click)="open()">
+          <nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate1">
+            <nz-card-meta nzTitle="Deluxe Veggie"
+              nzDescription="A classic American taste! Relish the delectable flavor of Chicken Pepperoni, topped with extra cheese">
+            </nz-card-meta>
+          </nz-card>
+          <ng-template #coverTemplate1>
+            <img alt="example" src="https://images.dominos.co.in/cheesepepperoni.png" />
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </nz-tab>
+</nz-tabset>
+<nz-card style="width:300px;" class="test">
+  <p>Item 1</p>
+  <p>Item 2</p>
+  <p>Item 3</p>
+</nz-card>
+
+<nz-drawer [nzClosable]="false" [nzVisible]="visible" [nzPlacement]="placement" nzTitle="Customize your Pizza"
+  (nzOnClose)="close()">
+  <p>Some contents...</p>
+  <p>Some contents...</p>
+  <p>Some contents...</p>
+</nz-drawer>

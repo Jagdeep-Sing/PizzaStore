@@ -1,4 +1,4 @@
-# Angular App Template
+# PIZZA S T O R E
 
 Welcome to the project documentation!
 
