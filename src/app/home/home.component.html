@@ -7,7 +7,7 @@
               <nz-card style="width:240px;" [nzCover]="coverTemplateQ"
                [nzActions]="[actionSetting, actionEdit, actionEllipsis]">
                   <nz-card-meta
-                  (click)="open(pizza.price,pizza.title,pizza.id)"
+                  (click)="open(pizza.price,pizza.title,pizza.id,pizza.image,pizza.desc)"
                     nzTitle={{pizza.title}}
                     nzDescription={{pizza.desc}}
                     [nzAvatar]="avatarTemplate"
@@ -17,7 +17,7 @@
                   <nz-avatar nzSrc={{pizza.image}}></nz-avatar>
                 </ng-template>
                 <ng-template #coverTemplateQ>
-                  <img alt="example"  (click)="open(pizza.price,pizza.title,pizza._id)" src={{pizza.image}} />
+                  <img alt="example"  (click)="open(pizza.price,pizza.title,pizza._id,pizza.image,pizza.desc)" src={{pizza.image}} />
                 </ng-template>
                 <ng-template #actionSetting>
                   <b>₹ {{pizza.price}}</b>
@@ -44,7 +44,7 @@
           <nz-card style="width:240px;" [nzCover]="coverTemplate"
            [nzActions]="[actionSetting, actionEdit, actionEllipsis]">
               <nz-card-meta
-              (click)="open(pizza.price,pizza.title,pizza.id)"
+              (click)="open(pizza.price,pizza.title,pizza.id,pizza.image,pizza.desc)"
                 nzTitle={{pizza.title}}
                 nzDescription={{pizza.desc}}
                 [nzAvatar]="avatarTemplate"
@@ -54,7 +54,7 @@
               <nz-avatar nzSrc={{pizza.image}}></nz-avatar>
             </ng-template>
             <ng-template #coverTemplate>
-              <img alt="example"  (click)="open(pizza.price,pizza.title,pizza._id)" src={{pizza.image}} />
+              <img alt="example"  (click)="open(pizza.price,pizza.title,pizza._id,pizza.image,pizza.desc)" src={{pizza.image}} />
             </ng-template>
             <ng-template #actionSetting>
               <b>₹ {{pizza.price}}</b>
@@ -98,9 +98,21 @@
 </nz-card>
 
 <!--SIDE DRAWER-->
-<nz-drawer [nzClosable]="false" [nzVisible]="visible" [nzPlacement]="placement" nzTitle="Customize your Pizza"
+<nz-drawer [nzClosable]="false" [nzWidth]="500" [nzVisible]="visible" [nzPlacement]="placement" [nzTitle]="customizeTitle"
   (nzOnClose)="close()">
-  <p>Some contents...</p>
-  <p>Some contents...</p>
-  <p>Some contents...</p>
+  <p>
+  <img alt="Error loading img" src="{{drawerImage}}" class="drawerImage" />
+</p>
+<p>
+  {{drawerDescription}}
+</p><hr>
+<p class="drawerSize">
+  Select Size
+    <nz-radio-group [(ngModel)]="radioValue" [nzButtonStyle]="'solid'">
+      <label nz-radio-button (click)="getSelectedSize(drawerPrice)" nzValue="A">Regular ₹ {{drawerPrice}}</label>
+      <label nz-radio-button (click)="getSelectedSize(drawerPrice+50)" nzValue="B">Medium ₹ {{drawerPrice + 50}}</label>
+      <label nz-radio-button (click)="getSelectedSize(drawerPrice+100)" nzValue="C">Large ₹ {{drawerPrice + 100}}</label>
+    </nz-radio-group>
+</p>
+
 </nz-drawer>

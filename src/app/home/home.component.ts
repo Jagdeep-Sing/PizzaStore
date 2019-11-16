@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   placement = 'left';
   tableLoader = false;
   tableSize = "small";
+  customizeTitle = ""
 
   vegPdata: any = [
     {
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit {
       "desc": "Black olives, capsicum, onion, grilled mushroom, corn, tomato, jalapeno & extra cheese 1",
       "price": "270",
       "image": "https://images.dominos.co.in/new_deluxe_veggie.jpg",
+      "size": "regular",
       "_id": "981"
     },
     {
@@ -29,6 +31,7 @@ export class HomeComponent implements OnInit {
       "desc": "Fresh onions, capsicum, olives, grilled mushroom, corn, tomato, jalapeno & extra cheese 2",
       "price": "300",
       "image": "https://images.dominos.co.in/IndianTandooriPaneer.jpg",
+      "size": "regular",
       "_id": "982"
     },
     {
@@ -36,6 +39,7 @@ export class HomeComponent implements OnInit {
       "desc": "Black olives, capsicum, onion, grilled mushroom, corn, tomato, jalapeno & extra cheese",
       "price": "250",
       "image": "https://images.dominos.co.in/new_veg_extravaganza.jpg",
+      "size": "regular",
       "_id": "983"
     }
   ];
@@ -46,6 +50,7 @@ export class HomeComponent implements OnInit {
       "desc": "The wholesome flavour of tandoori masala with Chicken tikka, onion, red paprika & mint mayo",
       "price": "500",
       "image": "https://images.dominos.co.in/cheesepepperoni.png",
+      "size": "regular",
       "_id": "090"
     },
     {
@@ -53,6 +58,7 @@ export class HomeComponent implements OnInit {
       "desc": "The wholesome flavour of tandoori masala with Chicken tikka, onion, red paprika & mint mayo",
       "price": "435",
       "image": "https://images.dominos.co.in/IndianTandooriChickenTikka.jpg",
+      "size": "regular",
       "_id": "091"
     },
     {
@@ -60,6 +66,7 @@ export class HomeComponent implements OnInit {
       "desc": "The wholesome flavour of tandoori masala with Chicken tikka, onion, red paprika & mint mayo",
       "price": "300",
       "image": "https://images.dominos.co.in/new_non_veg_supreme.jpg",
+      "size": "regular",
       "_id": "092"
     }
   ];
@@ -68,6 +75,11 @@ export class HomeComponent implements OnInit {
   cartObj: any = [];
   tempIndex = 0;
   addedItemKeys: string[];
+  drawerImage: any;
+  drawerPtitle: any;
+  drawerDescription: any;
+  radioValue = 'A';
+  drawerPrice: any;
   constructor(private quoteService: QuoteService) {}
 
   ngOnInit() {
@@ -84,8 +96,13 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  open(price: any, title: any, id: any): void {
+  open(price: any, title: any, id: any, image: any, desc: any): void {
     this.visible = true;
+    this.customizeTitle = "Customize your "+ title;
+    this.drawerImage = image;
+    this.drawerPtitle = title;
+    this.drawerDescription = desc;
+    this.drawerPrice = +price;
   }
   addtoCart(price: any, title: any, id: any): void{
    // this.tableLoader = true;
@@ -106,5 +123,12 @@ export class HomeComponent implements OnInit {
 
   close(): void {
     this.visible = false;
+  }
+  checkChange(e: boolean): void {
+    console.log(e);
+  }
+  getSelectedSize(price: number): void{
+    console.log(price)
+
   }
 }
