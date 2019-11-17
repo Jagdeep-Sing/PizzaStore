@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
 
 import { QuoteService } from './quote.service';
+import { NzMessageService } from 'ng-zorro-antd';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-home',
@@ -73,14 +75,15 @@ export class HomeComponent implements OnInit {
   globalPrice = 0;
 
   cartObj: any = [];
-  tempIndex = 0;
   addedItemKeys: string[];
   drawerImage: any;
   drawerPtitle: any;
   drawerDescription: any;
-  radioValue = 'A';
+  radioValue = '';
   drawerPrice: any;
-  constructor(private quoteService: QuoteService) {}
+  drawerId: any;
+  constructor(private quoteService: QuoteService,
+    private message: NzMessageService) { }
 
   ngOnInit() {
     this.isLoading = true;
@@ -94,26 +97,41 @@ export class HomeComponent implements OnInit {
       .subscribe((quote: string) => {
         this.quote = quote;
       });
+
+    // loader for some secs manually. because API request not there
+    setTimeout(function() {
+      $(".se-pre-con").fadeOut("slow");;
+    }, 1000);
+
   }
 
-  open(price: any, title: any, id: any, image: any, desc: any): void {
+  // Clicking on pizza will open the left side drawer. Handle events here
+  openDrawer(price: any, title: any, id: any, image: any, desc: any): void {
     this.visible = true;
-    this.customizeTitle = "Customize your "+ title;
+    this.customizeTitle = "Customize your " + title;
     this.drawerImage = image;
     this.drawerPtitle = title;
     this.drawerDescription = desc;
     this.drawerPrice = +price;
+    this.drawerId = id;
   }
-  addtoCart(price: any, title: any, id: any): void{
-   // this.tableLoader = true;
+
+  //
+  addtoCart(price: any, title: any, id: any): void {
+    // Subtotal
     this.globalPrice += +price;
-    if(this.cartObj[id] !== undefined) {
+
+    // If same pizza already added to cart, inceare the quantity and add price
+    if (this.cartObj[id] !== undefined) {
       this.cartObj[id].qty++;
       let tempPrice = parseInt(this.cartObj[id].price) + +price;
       this.cartObj[id].price = tempPrice;
-    } else{
-      this.cartObj[id] = {"price": price,"title": title,"_id": id,"qty": 1, "index":this.tempIndex};
-      this.tempIndex++;
+      this.message.create('success', `${this.cartObj[id].qty} ${this.cartObj[id].size} Pizzas added to cart`);
+
+    } else {
+      this.cartObj[id] = { "price": price, "title": title, "_id": id, "qty": 1, size: 'regular' };
+      this.message.create('success', `${this.cartObj[id].size} size pizza added to cart`);
+
     }
 
     this.addedItemKeys = Object.keys(this.cartObj);
@@ -127,8 +145,32 @@ export class HomeComponent implements OnInit {
   checkChange(e: boolean): void {
     console.log(e);
   }
-  getSelectedSize(price: number): void{
+  getSelectedSize(price: number, size: any): void {
     console.log(price)
+    let cstmId;
+
+    /** Default size is regular, if it is then maintain the
+     * same id otherwise create different id. Creating different id
+     * for different size will add pizza to cart as separate from other sizes
+     **/
+
+    if (size === 'regular') {
+      cstmId = this.drawerId;
+    } else {
+      cstmId = this.drawerId + size
+    }
+
+    if (this.cartObj[cstmId] !== undefined) {
+      this.cartObj[cstmId].qty++;
+      this.message.create('success', `${this.cartObj[cstmId].qty} ${this.cartObj[cstmId].size} Pizzas added to cart`);
+      let tempPrice = parseInt(this.cartObj[cstmId].price) + +price;
+      this.cartObj[cstmId].price = tempPrice;
+    } else {
+      this.cartObj[cstmId] = { "price": price, "title": this.drawerPtitle, "_id": cstmId, "qty": 1, size: size };
+      this.message.create('success', `${this.cartObj[cstmId].size} size pizza added to cart`);
+    }
+    this.globalPrice += +price;
+    this.addedItemKeys = Object.keys(this.cartObj);
 
   }
 }

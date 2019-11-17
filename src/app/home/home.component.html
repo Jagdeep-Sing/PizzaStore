@@ -1,73 +1,69 @@
+<div class="se-pre-con"></div>
+
 <nz-tabset>
   <!--VEG PIZZA TAB-->
   <nz-tab nzTitle="VEG PIZZA">
-      <div style="background: #ececec;padding:30px;">
-          <div nz-row [nzGutter]="8">
-            <div nz-col [nzSpan]="5"  *ngFor="let pizza of vegPdata">
-              <nz-card style="width:240px;" [nzCover]="coverTemplateQ"
-               [nzActions]="[actionSetting, actionEdit, actionEllipsis]">
-                  <nz-card-meta
-                  (click)="open(pizza.price,pizza.title,pizza.id,pizza.image,pizza.desc)"
-                    nzTitle={{pizza.title}}
-                    nzDescription={{pizza.desc}}
-                    [nzAvatar]="avatarTemplate"
-                  ></nz-card-meta>
-                </nz-card>
-                <ng-template #avatarTemplate>
-                  <nz-avatar nzSrc={{pizza.image}}></nz-avatar>
-                </ng-template>
-                <ng-template #coverTemplateQ>
-                  <img alt="example"  (click)="open(pizza.price,pizza.title,pizza._id,pizza.image,pizza.desc)" src={{pizza.image}} />
-                </ng-template>
-                <ng-template #actionSetting>
-                  <b>₹ {{pizza.price}}</b>
-                </ng-template>
-                <ng-template #actionEdit>
-                  <div (click)="addtoCart(pizza.price,pizza.title,pizza._id)">
-                      <!-- <i nz-icon nzType="minus" *ngIf="globalPrice > 0"></i> -->
-                      <i nz-icon nzType="plus"></i>
-                  </div>
-                </ng-template>
-                <ng-template #actionEllipsis>
-                  <i nz-icon nzType="ellipsis"></i>
-                </ng-template>
+    <div style="background: #ececec;padding:30px;">
+      <div nz-row [nzGutter]="8">
+        <div nz-col [nzSpan]="5" *ngFor="let pizza of vegPdata">
+          <nz-card style="width:240px;" [nzCover]="coverTemplateQ"
+            [nzActions]="[actionSetting, actionEdit, actionEllipsis]">
+            <nz-card-meta (click)="openDrawer(pizza.price,pizza.title,pizza._id,pizza.image,pizza.desc)"
+              nzTitle={{pizza.title}} nzDescription={{pizza.desc}} [nzAvatar]="avatarTemplate"></nz-card-meta>
+          </nz-card>
+          <ng-template #avatarTemplate>
+            <nz-avatar nzSrc={{pizza.image}}></nz-avatar>
+          </ng-template>
+          <ng-template #coverTemplateQ>
+            <img alt="example" (click)="openDrawer(pizza.price,pizza.title,pizza._id,pizza.image,pizza.desc)"
+              src={{pizza.image}} />
+          </ng-template>
+          <ng-template #actionSetting>
+            <b>₹ {{pizza.price}}</b>
+          </ng-template>
+          <ng-template #actionEdit>
+            <div (click)="addtoCart(pizza.price,pizza.title,pizza._id)">
+              <!-- <i nz-icon nzType="minus" *ngIf="globalPrice > 0"></i> -->
+              <i nz-icon nzType="plus"></i>
             </div>
-          </div>
+          </ng-template>
+          <ng-template #actionEllipsis>
+            <i nz-icon nzType="ellipsis"></i>
+          </ng-template>
         </div>
+      </div>
+    </div>
   </nz-tab>
 
   <!--NON-VEG PIZZA TAB-->
   <nz-tab nzTitle="NON-VEG PIZZA">
     <div style="background: #ececec;padding:30px;">
       <div nz-row [nzGutter]="8">
-        <div nz-col [nzSpan]="5"  *ngFor="let pizza of nonvegPdata">
+        <div nz-col [nzSpan]="5" *ngFor="let pizza of nonvegPdata">
           <nz-card style="width:240px;" [nzCover]="coverTemplate"
-           [nzActions]="[actionSetting, actionEdit, actionEllipsis]">
-              <nz-card-meta
-              (click)="open(pizza.price,pizza.title,pizza.id,pizza.image,pizza.desc)"
-                nzTitle={{pizza.title}}
-                nzDescription={{pizza.desc}}
-                [nzAvatar]="avatarTemplate"
-              ></nz-card-meta>
-            </nz-card>
-            <ng-template #avatarTemplate>
-              <nz-avatar nzSrc={{pizza.image}}></nz-avatar>
-            </ng-template>
-            <ng-template #coverTemplate>
-              <img alt="example"  (click)="open(pizza.price,pizza.title,pizza._id,pizza.image,pizza.desc)" src={{pizza.image}} />
-            </ng-template>
-            <ng-template #actionSetting>
-              <b>₹ {{pizza.price}}</b>
-            </ng-template>
-            <ng-template #actionEdit>
-              <div (click)="addtoCart(pizza.price,pizza.title,pizza._id)">
-                  <!-- <i nz-icon nzType="minus" *ngIf="globalPrice > 0"></i> -->
-                  <i nz-icon nzType="plus"></i>
-              </div>
-            </ng-template>
-            <ng-template #actionEllipsis>
-              <i nz-icon nzType="ellipsis"></i>
-            </ng-template>
+            [nzActions]="[actionSetting, actionEdit, actionEllipsis]">
+            <nz-card-meta (click)="openDrawer(pizza.price,pizza.title,pizza._id,pizza.image,pizza.desc)"
+              nzTitle={{pizza.title}} nzDescription={{pizza.desc}} [nzAvatar]="avatarTemplate"></nz-card-meta>
+          </nz-card>
+          <ng-template #avatarTemplate>
+            <nz-avatar nzSrc={{pizza.image}}></nz-avatar>
+          </ng-template>
+          <ng-template #coverTemplate>
+            <img alt="example" (click)="openDrawer(pizza.price,pizza.title,pizza._id,pizza.image,pizza.desc)"
+              src={{pizza.image}} />
+          </ng-template>
+          <ng-template #actionSetting>
+            <b>₹ {{pizza.price}}</b>
+          </ng-template>
+          <ng-template #actionEdit>
+            <div (click)="addtoCart(pizza.price,pizza.title,pizza._id)">
+              <!-- <i nz-icon nzType="minus" *ngIf="globalPrice > 0"></i> -->
+              <i nz-icon nzType="plus"></i>
+            </div>
+          </ng-template>
+          <ng-template #actionEllipsis>
+            <i nz-icon nzType="ellipsis"></i>
+          </ng-template>
         </div>
       </div>
     </div>
@@ -77,42 +73,45 @@
 <!--CART-->
 <nz-card style="width:300px;" class="test">
   <!-- <p>{{globalPrice}}</p> -->
-  <nz-table nzFooter="{{globalPrice}}" [nzScroll]="{ y: '150px' }" [nzLoadingDelay]="5"
-   #basicTable [nzData]="addedItemKeys" [nzShowPagination]="false"
-   [nzSize]="tableSize" [nzLoading]="tableLoader">
-      <thead>
-        <tr>
-          <th>Pizza</th>
-          <th>Quantity</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let data of basicTable.data">
-          <td>{{ cartObj[data].title }}</td>
-          <td>{{ cartObj[data].qty }}</td>
-          <td>{{ cartObj[data].price }}</td>
-        </tr>
-      </tbody>
-    </nz-table>
+  <nz-table nzFooter="{{globalPrice}}" [nzScroll]="{ y: '150px' }" [nzLoadingDelay]="5" #basicTable
+    [nzData]="addedItemKeys" [nzShowPagination]="false" [nzSize]="tableSize" [nzLoading]="tableLoader">
+    <thead>
+      <tr>
+        <th>Pizza</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ cartObj[data].title }}</td>
+        <td>{{ cartObj[data].qty }}</td>
+        <td>{{ cartObj[data].price }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
 </nz-card>
 
 <!--SIDE DRAWER-->
-<nz-drawer [nzClosable]="false" [nzWidth]="500" [nzVisible]="visible" [nzPlacement]="placement" [nzTitle]="customizeTitle"
-  (nzOnClose)="close()">
+<nz-drawer [nzClosable]="false" [nzWidth]="500" [nzVisible]="visible" [nzPlacement]="placement"
+  [nzTitle]="customizeTitle" (nzOnClose)="close()">
   <p>
-  <img alt="Error loading img" src="{{drawerImage}}" class="drawerImage" />
-</p>
-<p>
-  {{drawerDescription}}
-</p><hr>
-<p class="drawerSize">
-  Select Size
+    <img alt="Error loading img" src="{{drawerImage}}" class="drawerImage" />
+  </p>
+  <p>
+    {{drawerDescription}}
+  </p>
+  <hr>
+  <p class="drawerSize">
+    Select Size
     <nz-radio-group [(ngModel)]="radioValue" [nzButtonStyle]="'solid'">
-      <label nz-radio-button (click)="getSelectedSize(drawerPrice)" nzValue="A">Regular ₹ {{drawerPrice}}</label>
-      <label nz-radio-button (click)="getSelectedSize(drawerPrice+50)" nzValue="B">Medium ₹ {{drawerPrice + 50}}</label>
-      <label nz-radio-button (click)="getSelectedSize(drawerPrice+100)" nzValue="C">Large ₹ {{drawerPrice + 100}}</label>
+      <label nz-radio-button (click)="getSelectedSize(drawerPrice, 'regular')" nzValue="A">Regular ₹
+        {{drawerPrice}}</label>
+      <label nz-radio-button (click)="getSelectedSize(drawerPrice+50, 'medium')" nzValue="B">Medium ₹
+        {{drawerPrice + 50}}</label>
+      <label nz-radio-button (click)="getSelectedSize(drawerPrice+100, 'large')" nzValue="C">Large ₹
+        {{drawerPrice + 100}}</label>
     </nz-radio-group>
-</p>
+  </p>
 
 </nz-drawer>

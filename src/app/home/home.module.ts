@@ -12,6 +12,7 @@ import { QuoteService } from './quote.service';
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
   imports: [CommonModule, TranslateModule, CoreModule,
     SharedModule, Angulartics2Module,
